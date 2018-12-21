@@ -1,0 +1,265 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "Encrypted[96]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[97]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[98]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[99]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[100]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[101]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[102]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[103]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[104]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[105]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[106]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[107]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[108]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[109]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[110]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[111]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[112]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[113]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[114]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[115]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[116]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[117]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[118]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[119]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[120]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[121]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[122]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[123]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[124]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[125]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[126]",
+					"strict" : false
+				},
+				{
+					"name" : "Encrypted[127]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[96]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[97]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[98]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[99]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[100]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[101]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[102]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[103]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[104]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[105]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[106]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[107]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[108]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[109]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[110]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[111]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[112]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[113]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[114]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[115]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[116]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[117]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[118]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[119]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[120]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[121]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[122]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[123]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[124]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[125]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[126]",
+					"strict" : false
+				},
+				{
+					"name" : "RawData[127]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
