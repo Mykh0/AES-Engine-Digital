@@ -4,7 +4,7 @@ USE ieee.std_logic_1164.all;
 
 --  Entity Declaration
 
-ENTITY S_Box IS
+	ENTITY S_Box IS
 	-- {{ALTERA_IO_BEGIN}} DO NOT REMOVE THIS LINE!
 	PORT
 	(

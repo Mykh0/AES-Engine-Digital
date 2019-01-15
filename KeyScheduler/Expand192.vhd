@@ -31,28 +31,19 @@ ENTITY ExpandKeys IS
 	-- {{ALTERA_IO_BEGIN}} DO NOT REMOVE THIS LINE!
 	PORT
 	(
-		Key : IN STD_LOGIC_VECTOR(127 downto 0);
+		Key : IN STD_LOGIC_VECTOR(191 downto 0);
 		clk : IN STD_LOGIC;
 		nrst : IN STD_LOGIC;
 		start : IN STD_LOGIC;
-		SBox_data : IN STD_LOGIC_VECTOR(7 downto 0);
-		SBox_command : OUT STD_LOGIC_VECTOR(7 downto 0);
-		Key_I : OUT STD_LOGIC_VECTOR(127 downto 0)
+		Key_I : OUT STD_LOGIC_VECTOR(191 downto 0)
 	);
 	-- {{ALTERA_IO_END}} DO NOT REMOVE THIS LINE!
 
 END ExpandKeys;
 
-
 --  Architecture Body
 
 ARCHITECTURE ExpandKeys_architecture OF ExpandKeys IS
-
-
-  signal word1 : std_logic_vector(31 downto 0) := x"00000000";  
-  signal word2 : std_logic_vector(31 downto 0) := x"00000000";
-  signal word3 : std_logic_vector(31 downto 0) := x"00000000";
-  signal rconPassed80 : boolean := false;
   
   function setrcon(rcon: std_logic_vector(31 downto 0)) return std_logic_vector is
   variable tmp : std_logic_vector(31 downto 0) := x"00000000";

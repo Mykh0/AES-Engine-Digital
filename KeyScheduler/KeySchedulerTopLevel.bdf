@@ -129,18 +129,6 @@ agreement for further details.
 		)
 )
 (connector
-	(pt 344 160)
-	(pt 256 160)
-)
-(connector
-	(pt 344 192)
-	(pt 256 192)
-)
-(connector
-	(pt 344 256)
-	(pt 256 256)
-)
-(connector
 	(text "Key[127..0]" (rect 266 112 320 129)(font "Intel Clear" )(invisible))
 	(pt 344 128)
 	(pt 256 128)
@@ -151,4 +139,19 @@ agreement for further details.
 	(pt 624 144)
 	(pt 648 144)
 	(bus)
+)
+(connector
+	(text "clk" (rect 266 144 280 161)(font "Intel Clear" )(invisible))
+	(pt 344 160)
+	(pt 256 160)
+)
+(connector
+	(text "nrst" (rect 266 176 283 193)(font "Intel Clear" )(invisible))
+	(pt 344 192)
+	(pt 256 192)
+)
+(connector
+	(text "start" (rect 266 240 287 257)(font "Intel Clear" )(invisible))
+	(pt 344 256)
+	(pt 256 256)
 )
