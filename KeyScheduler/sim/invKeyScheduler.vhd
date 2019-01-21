@@ -399,140 +399,137 @@ ARCHITECTURE ExpandKeys_architecture OF ExpandKeys IS
 	    word(15 downto 8)  := SBox(A(15 downto 8));
 	    word(7  downto 0)  := SBox(A(7  downto 0));
 	    return word;
-	end function SBox32;
+  end function SBox32;
 	
-	function GenerateKeySchedules(Key : std_logic_vector(255 downto 0)) return KeyRegisters is
-		type aesState is array (7 downto 0) of std_logic_vector(31 downto 0);
-		type outputState is (init_128, a0to3_128,
-												 init_192, first4to1_192, a0to3_192, a4to1_192, a2to5_192,
-												 init_256, first4to7_256, a0to3_256, a4to7_256
-												 );
-    variable generatedKeys : KeyRegisters;
-		variable word: aesState;
-		variable states : outputState;
-		variable first : boolean := true;
-		variable rcon : std_logic_vector(31 downto 0) := x"00000000";
-		variable prevWord : std_logic_vector(31 downto 0) := x"00000000";
-		variable waitfor1clk : boolean := false;
-		begin
-			case Key_Length is
-				when b"00" =>
-					states := init_128;
-				when b"01" =>
-					states := init_192;
-				when b"10" =>
-					states := init_256;
-				when others =>
-					states := init_128;
-			end case;
-			for i in 0 to 14 loop
-				case states is
-					when init_256 =>
-						word(0) := Key(255 downto 224);
-						word(1) := Key(223 downto 192);
-						word(2) := Key(191 downto 160);
-						word(3) := Key(159 downto 128);
-						word(4) := Key(127 downto 96);
-						word(5) := Key(95 downto 64);
-						word(6) := Key(63 downto 32);
-						word(7) := Key(31 downto 0);
-						rcon :=  x"01000000";
-						prevWord := word(0);
-						states := first4to7_256;
-						generatedKeys(i) := word(0) & word(1) & word(2) & word(3);
-					when first4to7_256 =>
-						generatedKeys(i) := word(4) & word(5) & word(6) & word(7);
-						states := a0to3_256;
-					when a0to3_256 =>
-						prevWord := word(0);
-						word(0) := rotWord(word(7));
-						word(0) := SBox32(word(0));
-						word(0) := word(0) xor rcon xor prevWord;
-						word(1) := word(1) xor word(0);
-						word(2) := word(2) xor word(1);
-						word(3) := word(3) xor word(2);
-						generatedKeys(i) := word(0) & word(1) & word(2) & word(3);
-						states := a4to7_256;
-					when a4to7_256 =>
-						prevWord := word(4);
-						word(4) := SBox32(word(3));
-						word(4) := word(4) xor prevWord;
-						word(5) := word(5) xor word(4);
-						word(6) := word(6) xor word(5);
-						word(7) := word(7) xor word(6);
-						generatedKeys(i) := word(4) & word(5) & word(6) & word(7);
-						states := a0to3_256;
-						rcon := setrcon(rcon);
-					when init_128 =>
-						word(0) := Key(127 downto 96);
-						word(1) := Key(95 downto 64);
-						word(2) := Key(63 downto 32);
-						word(3) := Key(31 downto 0);
-						first := false;
-						rcon :=  x"01000000";
-						generatedKeys(i) := word(0) & word(1) & word(2) & word(3);
-						states := a0to3_128;
-					when a0to3_128 =>
-						prevWord := word(0);
-						word(0) := rotWord(word(3));
-						word(0) := SBox32(word(0));
-						word(0) := word(0) xor rcon xor prevWord;
-						word(1) := word(1) xor word(0);
-						word(2) := word(2) xor word(1);
-						word(3) := word(3) xor word(2);
-						rcon := setrcon(rcon);
-						generatedKeys(i) := word(0) & word(1) & word(2) & word(3);
-					when init_192 =>
-						word(0) := Key(191 downto 160);
-						word(1) := Key(159 downto 128);
-						word(2) := Key(127 downto 96);
-						word(3) := Key(95 downto 64);
-						word(4) := Key(63 downto 32);
-						word(5) := Key(31 downto 0);
-						rcon :=  x"01000000";
-						states := first4to1_192;
-						generatedKeys(i) := word(0) & word(1) & word(2) & word(3);
-					when first4to1_192 =>
-						prevWord := word(0);
-						word(0) := rotWord(word(5));
-						word(0) := SBox32(word(0));
-						word(0) := word(0) xor rcon xor prevWord;
-						word(1) := word(1) xor word(0);
-						generatedKeys(i) := word(4) & word(5) & word(0) & word(1);
-						states := a2to5_192;
-					when a0to3_192 =>
-						prevWord := word(0);
-						word(0) := rotWord(word(5));
-						word(0) := SBox32(word(0));
-						word(0) := word(0) xor rcon xor prevWord;
-						word(1) := word(1) xor word(0);
-						word(2) := word(2) xor word(1);
-						word(3) := word(3) xor word(2);
-						generatedKeys(i) := word(0) & word(1) & word(2) & word(3);
-						states := a4to1_192;
-					when a4to1_192 =>
-						word(4) := word(4) xor word(3);
-						word(5) := word(5) xor word(4);
-						rcon := setrcon(rcon);
-						prevWord := word(0);
-						word(0) := rotWord(word(5));
-						word(0) := SBox32(word(0));
-						word(0) := word(0) xor rcon xor prevWord;
-						word(1) := word(1) xor (word(0));
-						generatedKeys(i) := word(4) & word(5) & word(0) & word(1);
-						states := a2to5_192;
-					when a2to5_192 =>
-						word(2) := word(2) xor word(1);
-						word(3) := word(3) xor word(2);
-						word(4) := word(4) xor word(3);
-						word(5) := word(5) xor word(4);
-						generatedKeys(i) := word(2) & word(3) & word(4) & word(5);
-						rcon := setrcon(rcon);
-						states := a0to3_192;
-						end case;
+  function GenerateKeySchedules(Key : std_logic_vector(255 downto 0)) return KeyRegisters is
+      type aesState is array (7 downto 0) of std_logic_vector(31 downto 0);
+	  type outputState is (init_128, a0to3_128, init_192, first4to1_192, a0to3_192, a4to1_192, a2to5_192, init_256, first4to7_256, a0to3_256, a4to7_256);
+      variable generatedKeys : KeyRegisters;
+	  variable word: aesState;
+	  variable states : outputState;
+	  variable first : boolean := true;
+	  variable rcon : std_logic_vector(31 downto 0) := x"00000000";
+	  variable prevWord : std_logic_vector(31 downto 0) := x"00000000";
+	  variable waitfor1clk : boolean := false;
+	  begin
+	    case Key_Length is
+	    	when b"00" =>
+	    		states := init_128;
+	    	when b"01" =>
+	    		states := init_192;
+	    	when b"10" =>
+	    		states := init_256;
+	    	when others =>
+	    		states := init_128;
+	    end case;
+	    for i in 0 to 14 loop
+	    	case states is
+	    		when init_256 =>
+	    			word(0) := Key(255 downto 224);
+	    			word(1) := Key(223 downto 192);
+	    			word(2) := Key(191 downto 160);
+	    			word(3) := Key(159 downto 128);
+	    			word(4) := Key(127 downto 96);
+	    			word(5) := Key(95 downto 64);
+	    			word(6) := Key(63 downto 32);
+	    			word(7) := Key(31 downto 0);
+	    			rcon :=  x"01000000";
+	    			prevWord := word(0);
+	    			states := first4to7_256;
+	    			generatedKeys(i) := word(0) & word(1) & word(2) & word(3);
+	    		when first4to7_256 =>
+	    			generatedKeys(i) := word(4) & word(5) & word(6) & word(7);
+	    			states := a0to3_256;
+	    		when a0to3_256 =>
+	    			prevWord := word(0);
+	    			word(0) := rotWord(word(7));
+	    			word(0) := SBox32(word(0));
+	    			word(0) := word(0) xor rcon xor prevWord;
+	    			word(1) := word(1) xor word(0);
+	    			word(2) := word(2) xor word(1);
+	    			word(3) := word(3) xor word(2);
+	    			generatedKeys(i) := word(0) & word(1) & word(2) & word(3);
+	    			states := a4to7_256;
+	    		when a4to7_256 =>
+	    			prevWord := word(4);
+	    			word(4) := SBox32(word(3));
+	    			word(4) := word(4) xor prevWord;
+	    			word(5) := word(5) xor word(4);
+	    			word(6) := word(6) xor word(5);
+	    			word(7) := word(7) xor word(6);
+	    			generatedKeys(i) := word(4) & word(5) & word(6) & word(7);
+	    			states := a0to3_256;
+	    			rcon := setrcon(rcon);
+	    		when init_128 =>
+	    			word(0) := Key(127 downto 96);
+	    			word(1) := Key(95 downto 64);
+	    			word(2) := Key(63 downto 32);
+	    			word(3) := Key(31 downto 0);
+	    			first := false;
+	    			rcon :=  x"01000000";
+	    			generatedKeys(i) := word(0) & word(1) & word(2) & word(3);
+	    			states := a0to3_128;
+	    		when a0to3_128 =>
+	    			prevWord := word(0);
+	    			word(0) := rotWord(word(3));
+	    			word(0) := SBox32(word(0));
+	    			word(0) := word(0) xor rcon xor prevWord;
+	    			word(1) := word(1) xor word(0);
+	    			word(2) := word(2) xor word(1);
+	    			word(3) := word(3) xor word(2);
+	    			rcon := setrcon(rcon);
+	    			generatedKeys(i) := word(0) & word(1) & word(2) & word(3);
+	    		when init_192 =>
+	    			word(0) := Key(191 downto 160);
+	    			word(1) := Key(159 downto 128);
+	    			word(2) := Key(127 downto 96);
+	    			word(3) := Key(95 downto 64);
+	    			word(4) := Key(63 downto 32);
+	    			word(5) := Key(31 downto 0);
+	    			rcon :=  x"01000000";
+	    			states := first4to1_192;
+	    			generatedKeys(i) := word(0) & word(1) & word(2) & word(3);
+	    		when first4to1_192 =>
+	    			prevWord := word(0);
+	    			word(0) := rotWord(word(5));
+	    			word(0) := SBox32(word(0));
+	    			word(0) := word(0) xor rcon xor prevWord;
+	    			word(1) := word(1) xor word(0);
+	    			generatedKeys(i) := word(4) & word(5) & word(0) & word(1);
+	    			states := a2to5_192;
+	    		when a0to3_192 =>
+	    			prevWord := word(0);
+	    			word(0) := rotWord(word(5));
+	    			word(0) := SBox32(word(0));
+	    			word(0) := word(0) xor rcon xor prevWord;
+	    			word(1) := word(1) xor word(0);
+	    			word(2) := word(2) xor word(1);
+	    			word(3) := word(3) xor word(2);
+	    			generatedKeys(i) := word(0) & word(1) & word(2) & word(3);
+	    			states := a4to1_192;
+	    		when a4to1_192 =>
+	    			word(4) := word(4) xor word(3);
+	    			word(5) := word(5) xor word(4);
+	    			rcon := setrcon(rcon);
+	    			prevWord := word(0);
+	    			word(0) := rotWord(word(5));
+	    			word(0) := SBox32(word(0));
+	    			word(0) := word(0) xor rcon xor prevWord;
+	    			word(1) := word(1) xor (word(0));
+	    			generatedKeys(i) := word(4) & word(5) & word(0) & word(1);
+	    			states := a2to5_192;
+	    		when a2to5_192 =>
+	    			word(2) := word(2) xor word(1);
+	    			word(3) := word(3) xor word(2);
+	    			word(4) := word(4) xor word(3);
+	    			word(5) := word(5) xor word(4);
+	    			generatedKeys(i) := word(2) & word(3) & word(4) & word(5);
+	    			rcon := setrcon(rcon);
+	    			states := a0to3_192;
+	    			end case;
 			end loop;
 			return generatedKeys;
-		end function;
+  end function;
   
   BEGIN
   
