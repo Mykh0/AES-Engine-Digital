@@ -1,0 +1,19 @@
+Fri Jan 25 10:12:03 West-Europa (standaardtijd) 2019
+Trace back: can't set "RunLength": Recursive kernel call. Cannot execute SetRunLength {0 ns}.
+    while executing
+"set RunLength $vsimPriv(dlg_RunLength)"
+    (procedure "::Tbar::SetRunLengthFromInput" line 9)
+    invoked from within
+"::Tbar::SetRunLengthFromInput"
+    (procedure "Transcript::SimulateMenuPostCmd" line 12)
+    invoked from within
+"Transcript::SimulateMenuPostCmd .mBar.simulate"
+    ("eval" body line 1)
+    invoked from within
+"eval $post_cmd"
+    (procedure "::Vsimmenu::DefaultMenuPostCmd" line 13)
+    invoked from within
+"::Vsimmenu::DefaultMenuPostCmd .mBar.simulate {Transcript::SimulateMenuPostCmd .mBar.simulate} SetMenuState"
+    (menu preprocess)
+  2: ::tkerror {can't set "RunLength": Recursive kernel call. Cannot execute SetRunLength {0 ns}.}
+  1: ::bgerror {can't set "RunLength": Recursive kernel call. Cannot execute SetRunLength {0 ns}.}

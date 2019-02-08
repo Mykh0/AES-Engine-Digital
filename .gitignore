@@ -540,10 +540,10 @@ msbuild.wrn
 # Visual Studio 2015
 .vs/
 
-Vivado/AesDemo/AesDemo.runs/
-Vivado/AesDemo/AesDemo.cache/
-Vivado/AesDemo/AesDemo.tmp/
-Vivado/AesDemo/AesDemo.hw/
+**/*.runs/
+**/*.cache/
+**/*.tmp/
+**/*.hw/
 
 /build/
 *.suo
@@ -565,7 +565,6 @@ Version.cpp
 
 **/work/
 *.cr.mti
-*.mpf
 *.wlf
 
 *_generation_script*
@@ -596,12 +595,13 @@ Version.cpp
 *example*
 *sopc_*
 **/synthesis/
-Quartus/*/simulation/
-Quartus/simulation/
-Quartus/.txt
+*/Quartus/*/simulation/
+*/Quartus/simulation/
+*/Quartus/.txt
 **/incremental_db/
 **/db/
 **/bin/
-*/sim/*
-!*/sim/*.mpf
 **/output_files/
+
+!**/sim/.mpf
+
