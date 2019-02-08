@@ -107,6 +107,9 @@ architecture tb of testbench is
         RawData <= x"4f63760643e0aa85aff8c9d041fa0de4";
         wait for delay;
         foo := ass(x"794cf891177bfd1d8a327086f3831b39");
+        
+        RawData <= x"bd6e7c3df2b5779e0b61216e8b10b689";
+        wait for delay;
 
         report "Inverse MixColumns Tests done";
     end process test;

@@ -1,7 +1,7 @@
 restart -f
+view wave
 delete wave *
 
-view wave
 add wave -color white -radix x clk
 add wave -color red -radix x nrst
 add wave -color yellow -radix x start

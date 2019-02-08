@@ -363,3 +363,245 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database 
 healthchecksdb
+
+# A gitignore for Altera Quartus II that tries to ignore almost all of the
+# automatically Quartus-generated files. This primarily leaves the project,
+# settings, source, and constraint files to be added. The files ignored do not
+# include the bulk of the MegaFunction Wizard generated files which enables
+# a cloned repository to be used (usually) immediately without regenerating
+# Altera IP blocks.
+
+# Need to keep all HDL files and timing constraint files
+# *.vhd
+# *.v
+# *.sdc
+
+# ignore Quartus II generated folders
+*_sim
+db
+greybox_tmp
+incremental_db
+simulation
+testbench
+timing
+
+# ignore Quartus II generated files
+*_generation_script*
+*_inst.vhd
+*.bak
+*.cmp
+*.done
+*.eqn
+*.hex
+*.html
+*.jdi
+*.jpg
+*.mif
+*.pin
+*.pof
+*.ptf.*
+*.qar
+*.qarlog
+*.qws
+*.rpt
+*.smsg
+*.sof
+*.sopc_builder
+*.summary
+*.tcl
+*.txt # Explicitly add any text files used
+*~
+*example*
+*sopc_*
+PLLJ_PLLSPE_INFO.txt # The generated PLL specification file
+
+#########################################################################################################
+##	This is an example .gitignore file for Vivado, please treat it as an example as 
+##	it might not be complete. In addition, XAPP 1165 should be followed.
+#########################################################################################################
+#########
+#Exclude all
+#########
+*
+!*/
+!.gitignore
+###########################################################################
+##	VIVADO
+###########################################################################
+#########
+#Source files:
+#########
+#Do NOT ignore VHDL, Verilog, block diagrams or EDIF files.
+!*.vhd
+!*.v
+!*.bd
+!*.edif
+#########
+#IP files
+#########
+#.xci: synthesis and implemented not possible - you need to return back to the previous version to generate output products
+#.xci + .dcp: implementation possible but not re-synthesis
+#*.xci(www.spiritconsortium.org)
+!*.xci
+#*.dcp(checkpoint files)
+!*.dcp
+!*.vds
+!*.pb
+#All bd comments and layout coordinates are stored within .ui
+!*.ui
+!*.ooc
+#########
+#System Generator
+#########
+!*.mdl
+!*.slx
+!*.bxml
+#########
+#Simulation logic analyzer
+#########
+!*.wcfg
+!*.coe
+#########
+#MIG
+#########
+!*.prj
+!*.mem
+#########
+#Project files
+#########
+#XPR  +  *.XML ? XPR (Files are merged into a single XPR file for 2014.1 version)
+#Do NOT ignore *.xpr files
+!*.xpr
+#Include *.xml files for 2013.4 or earlier version
+!*.xml
+#########
+#Constraint files
+#########
+#Do NOT ignore *.xdc files
+!*.xdc
+#########
+#TCL - files
+#########
+!*.tcl
+#########
+#Journal - files
+#########
+!*.jou
+*.log
+*.wpc
+*.wdf
+#########
+#Reports
+#########
+!*.rpt
+!*.txt
+!*.vdi
+#########
+#C-files
+#########
+!*.c
+!*.h
+!*.elf
+!*.bmm
+!*.xmp
+
+*.swp
+*.*~
+project.lock.json
+.DS_Store
+*.pyc
+nupkg/
+
+# Visual Studio Code
+.vscode
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# Visual Studio 2015
+.vs/
+
+Vivado/AesDemo/AesDemo.runs/
+Vivado/AesDemo/AesDemo.cache/
+Vivado/AesDemo/AesDemo.tmp/
+Vivado/AesDemo/AesDemo.hw/
+
+/build/
+*.suo
+*.user
+_ReSharper.*/
+*.sdf
+*bin/
+*obj/
+*Debug/
+*Release/
+*.opensdf
+*.tlog
+*.log
+TestResult.xml
+*.VisualState.xml
+Version.cs
+Version.h
+Version.cpp
+
+**/work/
+*.cr.mti
+*.mpf
+*.wlf
+
+*_generation_script*
+*_inst.vhd
+*.bak
+*.cmp
+*.done
+*.eqn
+*.hex
+*.html
+*.jdi
+*.jpg
+*.mif
+*.pin
+*.pof
+*.ptf.*
+*.qar
+*.qarlog
+*.qws
+*.rpt
+*.smsg
+*.sof
+*.sopc_builder
+*.summary
+*.tcl
+*.txt # Explicitly add any text files used
+*~
+*example*
+*sopc_*
+**/synthesis/
+Quartus/*/simulation/
+Quartus/simulation/
+Quartus/.txt
+**/incremental_db/
+**/db/
+**/bin/
+*/sim/*
+!*/sim/*.mpf
+**/output_files/
