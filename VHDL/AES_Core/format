@@ -1,0 +1,81 @@
+onerror {resume}
+quietly WaveActivateNextPane {} 0
+add wave -noupdate -color green -format Literal -radix hexadecimal /aescoretb/aes_core_in
+add wave -noupdate -color green -format Literal -radix hexadecimal /aescoretb/ki_in
+add wave -noupdate -color yellow -format Logic -radix hexadecimal /aescoretb/keyadd_only
+add wave -noupdate -color yellow -format Logic -radix hexadecimal /aescoretb/last_round
+add wave -noupdate -color yellow -format Logic -radix hexadecimal /aescoretb/decrypt
+add wave -noupdate -color pink -format Literal -radix hexadecimal /aescoretb/aes_core_out
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/b2v_inst20/rawdata
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/b2v_inst20/encrypted
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/b2v_inst9/rs_out_altera_synthesized
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/b2v_inst9/rs_out
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/b2v_inst9/rs_in
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/b2v_inst9/b2v_inst9/virtual_out
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/b2v_inst9/b2v_inst9/virtual_in
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/subencrypt_res
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/subdecryptout
+add wave -noupdate -format Logic -radix hexadecimal /aescoretb/aesportmap/skip_mix_column
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/s_out1
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/s_out0
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/rs_out1
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/rs_out0
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/mc_out0
+add wave -noupdate -format Logic -radix hexadecimal /aescoretb/aesportmap/last_round
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/ki_in
+add wave -noupdate -format Logic -radix hexadecimal /aescoretb/aesportmap/keyadd_only
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/ka_in1
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/ka_in0
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/issr1
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/issr0
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/is_out1
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/is_out0
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/imco_out
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/encrypt_out
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/decrypt_out
+add wave -noupdate -format Logic -radix hexadecimal /aescoretb/aesportmap/decrypt
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/aes_core_out
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/aes_core_in
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/addkeymuxin
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/addkeyfrommux
+add wave -noupdate -format Logic -radix hexadecimal /aescoretb/aesportmap/b2v_inst10/sel
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/b2v_inst10/output
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/b2v_inst10/a2
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/b2v_inst10/a1
+add wave -noupdate -format Logic -radix hexadecimal /aescoretb/aesportmap/b2v_inst11/sel
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/b2v_inst11/output
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/b2v_inst11/a2
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/b2v_inst11/a1
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/b2v_inst13/data_out
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/b2v_inst13/data_in
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/b2v_inst13/data_out
+add wave -noupdate -format Literal -radix hexadecimal /aescoretb/aesportmap/b2v_inst13/data_out
+add wave -noupdate -color green -format Literal -radix hexadecimal /aescoretb/aes_core_in
+add wave -noupdate -color green -format Literal -radix hexadecimal /aescoretb/ki_in
+add wave -noupdate -color yellow -format Logic -radix hexadecimal /aescoretb/keyadd_only
+add wave -noupdate -color yellow -format Logic -radix hexadecimal /aescoretb/last_round
+add wave -noupdate -color yellow -format Logic -radix hexadecimal /aescoretb/decrypt
+add wave -noupdate -color pink -format Literal -radix hexadecimal /aescoretb/aes_core_out
+add wave -noupdate -color green -format Literal -radix hexadecimal /aescoretb/aes_core_in
+add wave -noupdate -color green -format Literal -radix hexadecimal /aescoretb/ki_in
+add wave -noupdate -color yellow -format Logic -radix hexadecimal /aescoretb/keyadd_only
+add wave -noupdate -color yellow -format Logic -radix hexadecimal /aescoretb/last_round
+add wave -noupdate -color yellow -format Logic -radix hexadecimal /aescoretb/decrypt
+add wave -noupdate -color pink -format Literal -radix hexadecimal /aescoretb/aes_core_out
+TreeUpdate [SetDefaultTree]
+WaveRestoreCursors {{Cursor 1} {63 ns} 0}
+configure wave -namecolwidth 358
+configure wave -valuecolwidth 223
+configure wave -justifyvalue left
+configure wave -signalnamewidth 0
+configure wave -snapdistance 10
+configure wave -datasetprefix 0
+configure wave -rowmargin 4
+configure wave -childrowmargin 2
+configure wave -gridoffset 0
+configure wave -gridperiod 1
+configure wave -griddelta 40
+configure wave -timeline 0
+configure wave -timelineunits ns
+update
+WaveRestoreZoom {27 ns} {194 ns}
